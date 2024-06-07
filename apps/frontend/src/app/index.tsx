@@ -2,8 +2,11 @@ import React from "react";
 import type { FunctionComponentElement } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
+import { ThemeProvider } from "@emotion/react";
+import { CssBaseline } from "@mui/material";
 import { trpc } from "../utils/trpc";
-import Container from "./app";
+import Container from "./container";
+import theme from "./theme";
 
 export default function App(): FunctionComponentElement<JSX.Element> {
   const queryClient = new QueryClient();
@@ -16,10 +19,13 @@ export default function App(): FunctionComponentElement<JSX.Element> {
   });
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>
-        <Container />
-      </QueryClientProvider>
-    </trpc.Provider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <trpc.Provider client={trpcClient} queryClient={queryClient}>
+        <QueryClientProvider client={queryClient}>
+          <Container />
+        </QueryClientProvider>
+      </trpc.Provider>
+    </ThemeProvider>
   );
 }
