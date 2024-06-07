@@ -4,11 +4,22 @@ import morgan from "morgan";
 import cors from "cors";
 import { initTRPC } from "@trpc/server";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import { db } from "./drizzle/db";
 
 const t = initTRPC.create();
 
 const appRouter = t.router({
-  hello: t.procedure.query(() => "Hello World"),
+  hello: t.procedure.query(async () => {
+    const post = await db.query.ProductTable.findFirst({
+      columns: {
+        name: true,
+        modelFileName: true,
+        likes: true,
+        dislikes: true,
+      },
+    });
+    return post;
+  }),
   testing: t.procedure.query(() => "Testing"),
 });
 

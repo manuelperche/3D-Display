@@ -12,14 +12,17 @@ import Model from "./components/model";
 export default function Container(): FunctionComponentElement<JSX.Element> {
   const { data } = trpc.hello.useQuery();
 
-  const { scene } = useLoader(GLTFLoader, "https://uploadthing-prod-sea1.s3.us-west-2.amazonaws.com/60116119-5d4f-4d4a-a150-e5ebe1346603-saawxt.glb");
+  const { scene } = useLoader(
+    GLTFLoader,
+    data?.modelFileName || "https://uploadthing-prod-sea1.s3.us-west-2.amazonaws.com/60116119-5d4f-4d4a-a150-e5ebe1346603-saawxt.glb"
+  );
 
   return (
     <Box alignItems="center" display="flex" justifyContent="center" minHeight="100vh">
       <Card>
-        <CardContent sx={{height: 500, width: 500}} >
+        <CardContent sx={{ height: 500, width: 500 }}>
           <Typography component="div" variant="h5">
-            {data}
+            {data?.name}
           </Typography>
           <Model scene={scene} />
         </CardContent>

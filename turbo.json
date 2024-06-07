@@ -37,6 +37,11 @@
     },
     "clean": {
       "cache": false
+    },
+    "db:migrate": {
+      "env": [
+        "DATABASE_URL"
+      ]
     }
   }
 }
