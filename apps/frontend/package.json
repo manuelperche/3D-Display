@@ -6,20 +6,26 @@
     "build": "vite build",
     "clean": "rm -rf dist",
     "dev": "vite --host 0.0.0.0 --port 3001 --clearScreen false",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc -b",
     "lint": "eslint src/"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.40.1",
+    "@tanstack/react-query-devtools": "^5.40.1",
+    "@trpc/client": "11.0.0-rc.394",
+    "@trpc/next": "11.0.0-rc.394",
+    "@trpc/react-query": "11.0.0-rc.394",
+    "@trpc/server": "11.0.0-rc.394",
+    "backend": "workspace:*",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@repo/ui": "workspace:*"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/react": "^18.2.62",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
     "typescript": "^5.3.3",
     "vite": "^5.1.4"
   }

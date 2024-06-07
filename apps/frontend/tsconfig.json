@@ -3,7 +3,11 @@
   "extends": "@repo/typescript-config/vite.json",
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@backend/*": ["../backend/*"]
+    }
   },
-  "include": ["src", "vite.config.ts"]
+  "include": ["src", "vite.config.ts"],
+  "references": [{ "path": "../backend" }]
 }

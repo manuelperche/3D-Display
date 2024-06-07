@@ -8,7 +8,7 @@
     "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "ESNext",
-    "noEmit": true,
+    "noEmit": false,
     "resolveJsonModule": true,
     "skipLibCheck": false,
     "target": "ESNext",
