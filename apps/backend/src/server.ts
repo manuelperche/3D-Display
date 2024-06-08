@@ -17,6 +17,10 @@ export const createServer = (): Express => {
 
   app.use("/trpc", createExpressMiddleware({ router: appRouter }));
 
+  app.get('/ping', (req, res) => {
+    return res.send('pong 🏓')
+  })
+
   return app;
 };
 
