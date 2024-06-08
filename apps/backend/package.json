@@ -6,6 +6,8 @@
     "start": "node dist/index.js",
     "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
     "build": "rimraf dist && tsup",
+    "ts.check": "tsup --project tsconfig.json",
+    "add-build": "git add dist",
     "clean": "rm -rf dist",
     "typecheck": "tsc -b",
     "lint": "eslint src/",
