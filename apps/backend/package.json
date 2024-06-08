@@ -4,10 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
-    "build": "rimraf dist && tsup",
-    "ts.check": "tsup --project tsconfig.json",
-    "add-build": "git add dist",
+    "dev": "tsup --watch --onSuccess \"node api/index.js\"",
+    "build": "tsup",
     "clean": "rm -rf dist",
     "typecheck": "tsc -b",
     "lint": "eslint src/",
@@ -47,10 +45,5 @@
     "supertest": "^6.3.4",
     "tsup": "^8.0.2",
     "typescript": "4.9.5"
-  },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ]
+  }
 }
