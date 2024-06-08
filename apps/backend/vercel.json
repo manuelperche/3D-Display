@@ -3,7 +3,7 @@
   "rewrites": [{ "source": "/(.*)", "destination": "/api" }],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/trpc/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "https://3-d-display-frontend.vercel.app" },
