@@ -8,7 +8,7 @@ import { trpc } from "../utils/trpc";
 import Container from "./container";
 import theme from "./theme";
 
-export default function App(): FunctionComponentElement<JSX.Element> {
+function App(): FunctionComponentElement<JSX.Element> {
   const queryClient = new QueryClient();
   const trpcClient = trpc.createClient({
     links: [
@@ -29,3 +29,5 @@ export default function App(): FunctionComponentElement<JSX.Element> {
     </ThemeProvider>
   );
 }
+
+export default App;

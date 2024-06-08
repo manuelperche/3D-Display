@@ -1,20 +1,21 @@
 import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { Html, OrbitControls } from "@react-three/drei";
-import type { Group} from "three";
+import type { Group } from "three";
+import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 interface ModelProps {
-  scene: Group;
+  sceneUrl: string;
 }
 
-function Model({ scene }: ModelProps) {
+function Model({ sceneUrl }: ModelProps) {
+  const { scene } = useLoader(GLTFLoader, sceneUrl);
+
   return (
     <Canvas camera={{ position: [1, 1, 10] }}>
       <ambientLight />
       <spotLight intensity={2} position={[20, 20, 20]} />
-      <Suspense fallback={<Html center>loading...</Html>}>
-        <primitive dispose={null} object={scene} position={[0, 0, 0]} />
-      </Suspense>
+      <primitive dispose={null} object={scene} position={[0, 0, 0]} />
       <OrbitControls />
     </Canvas>
   );
