@@ -1,5 +1,5 @@
 import { t } from "../trpc";
-import { db } from "../drizzle/db";
+import { db } from "../utils/db";
 
 export const productsRouter = t.router({
   getProduct: t.procedure.query(async () => {
