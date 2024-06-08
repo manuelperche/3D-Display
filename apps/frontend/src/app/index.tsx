@@ -13,7 +13,7 @@ function App(): FunctionComponentElement<JSX.Element> {
   const trpcClient = trpc.createClient({
     links: [
       httpBatchLink({
-        url: "http://localhost:5001/trpc",
+        url: import.meta.env.VITE_API_URL || "",
       }),
     ],
   });
