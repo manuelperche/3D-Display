@@ -14,6 +14,12 @@ function App(): FunctionComponentElement<JSX.Element> {
     links: [
       httpBatchLink({
         url: `${import.meta.env.VITE_API_URL}/trpc`,
+        fetch(url, options) {
+          return fetch(url, {
+            ...options,
+            credentials: "include",
+          });
+        },
       }),
     ],
   });
