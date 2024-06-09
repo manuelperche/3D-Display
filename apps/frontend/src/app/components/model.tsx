@@ -6,9 +6,10 @@ import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 interface ModelProps {
   sceneUrl: string;
+  rotate?: boolean;
 }
 
-function Model({ sceneUrl }: ModelProps) {
+function Model({ sceneUrl, rotate = false }: ModelProps) {
   const { scene } = useLoader(GLTFLoader, sceneUrl);
 
   return (
@@ -16,7 +17,7 @@ function Model({ sceneUrl }: ModelProps) {
       <ambientLight />
       <spotLight intensity={2} position={[20, 20, 20]} />
       <primitive dispose={null} object={scene} position={[0, 0, 0]} />
-      <OrbitControls />
+      {rotate && <OrbitControls />}
     </Canvas>
   );
 }
