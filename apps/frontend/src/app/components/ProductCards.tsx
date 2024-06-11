@@ -10,7 +10,7 @@ import { trpc } from "../Utils/trpc";
 import Loader from "./Loader";
 import Model from "./Model";
 
-function ProductCard(props: ProductType) {
+function ProductCards(props: ProductType) {
   const { id, name, modelFileName, likes, dislikes, comments } = props;
   const utils = trpc.useUtils();
 
@@ -67,4 +67,4 @@ function ProductCard(props: ProductType) {
   );
 }
 
-export default ProductCard;
+export default ProductCards;

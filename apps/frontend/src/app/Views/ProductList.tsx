@@ -2,7 +2,7 @@ import React from "react";
 import type { FunctionComponentElement } from "react";
 import { Grid } from "@mui/material";
 import { trpc } from "../Utils/trpc";
-import ProductCard from "../Components/ProductCard";
+import ProductCards from "../Components/ProductCards";
 import Loader from "../Components/Loader";
 
 function ProductList(): FunctionComponentElement<JSX.Element> {
@@ -14,7 +14,7 @@ function ProductList(): FunctionComponentElement<JSX.Element> {
     <Grid alignItems="center" container justifyContent="center" spacing={3} sx={{ minHeight: "100vh", padding: 5 }}>
       {data?.map((product) => (
         <Grid item key={product.id} md={4} sm={6} sx={{ height: 400 }} xs={12}>
-          <ProductCard {...product} />
+          <ProductCards {...product} />
         </Grid>
       ))}
     </Grid>
