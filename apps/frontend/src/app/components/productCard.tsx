@@ -1,15 +1,14 @@
-import React, { memo, Suspense, useState } from "react";
+import React, { Suspense, useState } from "react";
 import { Card, CardContent, Typography, Stack, Box } from "@mui/material";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import CommentIcon from "@mui/icons-material/Comment";
-import { useNavigate } from "react-router-dom";
 import type { Product as ProductType } from "../Types/Product";
-import Model from "./Model";
-import Loader from "./Loader";
 import Product from "../Views/Product";
 import ProductProvider from "../Contexts/ProductContext";
 import { trpc } from "../Utils/trpc";
+import Loader from "./Loader";
+import Model from "./Model";
 
 function ProductCard(props: ProductType) {
   const { id, name, modelFileName, likes, dislikes, comments } = props;
@@ -68,4 +67,4 @@ function ProductCard(props: ProductType) {
   );
 }
 
-export default memo(ProductCard);
+export default ProductCard;

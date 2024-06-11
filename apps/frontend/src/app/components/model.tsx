@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
@@ -21,4 +21,4 @@ function Model({ sceneUrl, rotate = false }: ModelProps) {
   );
 }
 
-export default memo(Model);
+export default Model;
