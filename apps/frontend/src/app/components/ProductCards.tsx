@@ -7,7 +7,7 @@ import type { Product as ProductType } from "../Types/Product";
 import Product from "../Views/Product";
 import ProductProvider from "../Contexts/ProductContext";
 import { trpc } from "../Utils/trpc";
-import Loader from "./Loader";
+import Loader from "./loader";
 import Model from "./Model";
 
 function ProductCards(props: ProductType) {

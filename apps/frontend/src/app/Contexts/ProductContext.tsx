@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { trpc } from "../Utils/trpc";
 import type { Comment, Product } from "../Types/Product";
-import Loader from "../Components/Loader";
+import Loader from "../Components/loader";
 
 interface ProductContext {
   product: Product;

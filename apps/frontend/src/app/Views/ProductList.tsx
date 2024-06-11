@@ -3,7 +3,7 @@ import type { FunctionComponentElement } from "react";
 import { Grid } from "@mui/material";
 import { trpc } from "../Utils/trpc";
 import ProductCards from "../Components/ProductCards";
-import Loader from "../Components/Loader";
+import Loader from "../Components/loader";
 
 function ProductList(): FunctionComponentElement<JSX.Element> {
   const { data, isFetching, isRefetching } = trpc.products.getProducts.useQuery();
