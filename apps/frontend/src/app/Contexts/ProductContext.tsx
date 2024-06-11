@@ -6,10 +6,14 @@ import Loader from "../Components/Loader";
 
 interface ProductContext {
   product: Product;
-  setProduct: React.Dispatch<React.SetStateAction<Product | null>>
+  setProduct: React.Dispatch<React.SetStateAction<Product | null>>;
   comments: Comment[];
   createLocalComment: (comment: Comment) => void;
-  updateLocalComment: (commentId: string, text: string, updatedAt: string) => void;
+  updateLocalComment: (
+    commentId: string,
+    text: string,
+    updatedAt: string,
+  ) => void;
   deleteLocalComment: (commentId: string) => void;
 }
 
@@ -19,7 +23,13 @@ export function useProduct() {
   return useContext(Context);
 }
 
-function ProductProvider({ children, id }: { children: ReactNode, id: string }) {
+function ProductProvider({
+  children,
+  id,
+}: {
+  children: ReactNode;
+  id: string;
+}) {
   const { data, isLoading } = trpc.products.getProduct.useQuery(id);
 
   const [product, setProduct] = useState<Product | null>(null);
@@ -44,7 +54,11 @@ function ProductProvider({ children, id }: { children: ReactNode, id: string }) 
     });
   }
 
-  function updateLocalComment(commentId: string, text: string, updatedAt: string) {
+  function updateLocalComment(
+    commentId: string,
+    text: string,
+    updatedAt: string,
+  ) {
     setComments((prevComments) => {
       return prevComments.map((comment) => {
         if (comment.id === commentId) {

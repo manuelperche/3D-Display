@@ -29,7 +29,12 @@ function Comment({ comment }: { comment: CommentProps }) {
   return (
     <Paper key={comment.id} style={{ padding: "30px 30px", marginTop: 10 }}>
       {isEditing ? (
-        <CommentForm id={comment.id} name={comment.name} onCancel={onCancel} text={comment.text} />
+        <CommentForm
+          id={comment.id}
+          name={comment.name}
+          onCancel={onCancel}
+          text={comment.text}
+        />
       ) : (
         <Grid container spacing={2} wrap="nowrap">
           <Grid item>
@@ -42,15 +47,22 @@ function Comment({ comment }: { comment: CommentProps }) {
                 sx={{ marginX: 1, marginTop: 2, cursor: "pointer" }}
               />
             </div>
-            <DeleteIcon onClick={onDelete} sx={{ marginX: 1, marginTop: 2, cursor: "pointer" }} />
+            <DeleteIcon
+              onClick={onDelete}
+              sx={{ marginX: 1, marginTop: 2, cursor: "pointer" }}
+            />
           </Grid>
           <Grid item justifyContent="left" xs zeroMinWidth>
             <h4 style={{ margin: 0, textAlign: "left" }}>{comment.name}</h4>
             <p style={{ textAlign: "left" }}>{comment.text}</p>
             {comment.createdAt !== comment.updatedAt ? (
-              <p style={{ textAlign: "left", color: "gray" }}>{`Edited ${TimeAgo(comment.updatedAt)}`}</p>
+              <p
+                style={{ textAlign: "left", color: "gray" }}
+              >{`Edited ${TimeAgo(comment.updatedAt)}`}</p>
             ) : (
-              <p style={{ textAlign: "left", color: "gray" }}>{`Posted ${TimeAgo(comment.createdAt)}`}</p>
+              <p
+                style={{ textAlign: "left", color: "gray" }}
+              >{`Posted ${TimeAgo(comment.createdAt)}`}</p>
             )}
           </Grid>
         </Grid>

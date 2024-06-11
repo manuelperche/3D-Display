@@ -7,7 +7,7 @@ const drizzleMock: DeepMockProxy<typeof db> = mockDeep();
 const caller = createCaller({ db: drizzleMock });
 
 describe("Products", () => {
-  it("should return a list of products", async () => {
+  it("Should return a list of products", async () => {
     const mockOutput: any[] = [
       {
         comments: [

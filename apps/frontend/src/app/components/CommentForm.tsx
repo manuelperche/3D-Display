@@ -25,7 +25,6 @@ const schema = z.object({
 });
 
 function CommentBox({ id, name, text, onCancel }: CommentsProps) {
-
   const { updateLocalComment, createLocalComment, product } = useProduct();
 
   const addComment = trpc.comments.addComment.useMutation();

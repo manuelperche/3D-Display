@@ -1,5 +1,13 @@
 import React, { Suspense } from "react";
-import { Modal, Box, Typography, Button, Stack, Grid, Tooltip } from "@mui/material";
+import {
+  Modal,
+  Box,
+  Typography,
+  Button,
+  Stack,
+  Grid,
+  Tooltip,
+} from "@mui/material";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import CommentIcon from "@mui/icons-material/Comment";
@@ -35,7 +43,12 @@ function Product({ open, handleClose }: ProductModalProps): JSX.Element {
   };
 
   return (
-    <Modal aria-describedby="modal-modal-description" aria-labelledby="modal-modal-title" onClose={handleClose} open={open}>
+    <Modal
+      aria-describedby="modal-modal-description"
+      aria-labelledby="modal-modal-title"
+      onClose={handleClose}
+      open={open}
+    >
       <Box
         sx={{
           position: "absolute",
@@ -65,7 +78,12 @@ function Product({ open, handleClose }: ProductModalProps): JSX.Element {
               <Model rotate sceneUrl={product.modelFileName} />
             </Suspense>
           </Grid>
-          <Grid item md={4} sx={{ height: "100%", overflow: "auto", padding: 2 }} xs={12}>
+          <Grid
+            item
+            md={4}
+            sx={{ height: "100%", overflow: "auto", padding: 2 }}
+            xs={12}
+          >
             <Typography component="h2" id="modal-modal-title" variant="h6">
               {product.name}
             </Typography>

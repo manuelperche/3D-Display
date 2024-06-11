@@ -25,7 +25,7 @@ export const createServer = (): Express => {
           db,
         };
       },
-    })
+    }),
   );
 
   app.get("/ping", (req, res) => {

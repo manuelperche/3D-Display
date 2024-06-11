@@ -3,4 +3,4 @@ import type { Context } from "./context";
 
 export const t = initTRPC.context<Context>().create();
 
-export const createCallerFactory = t.createCallerFactory
+export const createCallerFactory = t.createCallerFactory;

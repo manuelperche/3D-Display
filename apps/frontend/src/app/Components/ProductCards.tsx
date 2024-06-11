@@ -21,7 +21,7 @@ function ProductCards(props: ProductType) {
   };
   const handleClose = () => {
     setOpen(false);
-    utils.products.getProducts.invalidate()
+    utils.products.getProducts.invalidate();
   };
 
   return (
@@ -45,16 +45,31 @@ function ProductCards(props: ProductType) {
           )}
         </Box>
         <Stack direction="row" sx={{ marginTop: 2 }}>
-          <Stack alignItems="center" direction="row" gap={1} sx={{ marginRight: 3 }}>
+          <Stack
+            alignItems="center"
+            direction="row"
+            gap={1}
+            sx={{ marginRight: 3 }}
+          >
             <ThumbUpAltIcon />
             <Typography variant="body1">{likes}</Typography>
           </Stack>
 
-          <Stack alignItems="center" direction="row" gap={1} sx={{ marginRight: 3 }}>
+          <Stack
+            alignItems="center"
+            direction="row"
+            gap={1}
+            sx={{ marginRight: 3 }}
+          >
             <ThumbDownAltIcon />
             <Typography variant="body1">{dislikes}</Typography>
           </Stack>
-          <Stack alignItems="center" direction="row" gap={1} sx={{ marginRight: 3 }}>
+          <Stack
+            alignItems="center"
+            direction="row"
+            gap={1}
+            sx={{ marginRight: 3 }}
+          >
             <CommentIcon />
             <Typography variant="body1">{comments.length}</Typography>
           </Stack>
