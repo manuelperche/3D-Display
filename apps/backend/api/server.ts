@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "./routers";
+import { db } from "./utils/db";
 
 export const createServer = (): Express => {
   const app = express();
@@ -15,11 +16,21 @@ export const createServer = (): Express => {
     .use(json())
     .use(cors());
 
-  app.use("/trpc", createExpressMiddleware({ router: appRouter }));
+  app.use(
+    "/trpc",
+    createExpressMiddleware({
+      router: appRouter,
+      createContext: () => {
+        return {
+          db,
+        };
+      },
+    })
+  );
 
-  app.get('/ping', (req, res) => {
-    return res.send('pong 🏓')
-  })
+  app.get("/ping", (req, res) => {
+    return res.send("pong 🏓");
+  });
 
   return app;
 };

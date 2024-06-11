@@ -9,12 +9,11 @@ export default function Header() {
     <Box>
         <Typography
           align="center"
-          color="inherit"
+          color="text.secondary"
           component="h2"
           noWrap
           sx={{ flex: 1 }}
           variant="h2"
-          color="text.secondary"
         >
           3D Display
         </Typography>

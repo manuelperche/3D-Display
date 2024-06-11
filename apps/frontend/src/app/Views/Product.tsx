@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import { Modal, Box, Typography, Button, Stack, Grid, Tooltip } from "@mui/material";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
@@ -65,7 +65,7 @@ function Product({ open, handleClose }: ProductModalProps): JSX.Element {
               <Model rotate sceneUrl={product.modelFileName} />
             </Suspense>
           </Grid>
-          <Grid item md={4} xs={12} sx={{ height: "100%", overflow: "auto", padding: 2 }}>
+          <Grid item md={4} sx={{ height: "100%", overflow: "auto", padding: 2 }} xs={12}>
             <Typography component="h2" id="modal-modal-title" variant="h6">
               {product.name}
             </Typography>
