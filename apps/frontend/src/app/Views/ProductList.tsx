@@ -1,11 +1,11 @@
 import React from "react";
 import type { FunctionComponentElement } from "react";
 import { Grid } from "@mui/material";
-import { trpc } from "./Utils/trpc";
-import ProductCard from "./Components/ProductCard";
-import Loader from "./Components/Loader";
+import { trpc } from "../Utils/trpc";
+import ProductCard from "../Components/ProductCard";
+import Loader from "../Components/Loader";
 
-function Container(): FunctionComponentElement<JSX.Element> {
+function ProductList(): FunctionComponentElement<JSX.Element> {
   const { data, isFetching, isRefetching } = trpc.products.getProducts.useQuery();
 
   if (isFetching && !isRefetching) return <Loader />;
@@ -21,4 +21,4 @@ function Container(): FunctionComponentElement<JSX.Element> {
   );
 }
 
-export default Container;
+export default ProductList;

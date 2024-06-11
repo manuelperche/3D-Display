@@ -1,4 +1,4 @@
-export function timeAgo(timestamp: string): string {
+export function TimeAgo(timestamp: string): string {
   const date = new Date(timestamp);
   const now = new Date();
   const secondsPast = (now.getTime() - date.getTime()) / 1000;

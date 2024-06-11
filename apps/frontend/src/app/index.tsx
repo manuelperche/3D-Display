@@ -4,9 +4,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
-import { trpc } from "../utils/trpc";
-import Container from "./container";
+import { trpc } from "./Utils/trpc";
 import theme from "./theme";
+import ProductList from "./Views/ProductList";
 
 function App(): FunctionComponentElement<JSX.Element> {
   const queryClient = new QueryClient();
@@ -23,7 +23,7 @@ function App(): FunctionComponentElement<JSX.Element> {
       <CssBaseline />
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
-          <Container />
+          <ProductList />
         </QueryClientProvider>
       </trpc.Provider>
     </ThemeProvider>

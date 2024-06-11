@@ -1,30 +1,19 @@
-import React, { useState } from "react";
-import { Card, CardContent, Typography, Button, Stack, Box } from "@mui/material";
+import React, { memo, Suspense, useState } from "react";
+import { Card, CardContent, Typography, Stack, Box } from "@mui/material";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import CommentIcon from "@mui/icons-material/Comment";
-import { trpc } from "../../utils/trpc";
-import Model from "./model";
-import PostModal from "./productModal";
+import { useNavigate } from "react-router-dom";
+import type { Product as ProductType } from "../Types/Product";
+import Model from "./Model";
+import Loader from "./Loader";
+import Product from "../Views/Product";
+import ProductProvider from "../Contexts/ProductContext";
+import { trpc } from "../Utils/trpc";
 
-export interface Product {
-  id: string;
-  name: string;
-  modelFileName: string;
-  likes: number;
-  dislikes: number;
-  comments: {
-    id: string;
-    name: string;
-    text: string;
-    createdAt: string;
-    updatedAt: string;
-    productId: string;
-  }[];
-}
-
-function ProductCard(props: Product) {
+function ProductCard(props: ProductType) {
   const { id, name, modelFileName, likes, dislikes, comments } = props;
+  const utils = trpc.useUtils();
 
   const [open, setOpen] = useState(false);
 
@@ -33,44 +22,50 @@ function ProductCard(props: Product) {
   };
   const handleClose = () => {
     setOpen(false);
+    utils.products.getProducts.invalidate()
   };
 
-
   return (
-    <Card>
-      <CardContent onClick={handleOpen} sx={{ cursor: "pointer" }}>
+    <Card sx={{ height: "100%" }}>
+      <CardContent
+        onClick={() => {
+          handleOpen();
+        }}
+        sx={{ cursor: "pointer" }}
+      >
         <Typography component="div" variant="h5">
           {name}
         </Typography>
-        {open ? <Box sx={{ height: "150px" }} /> : <Model sceneUrl={modelFileName} />}
+        <Box sx={{ height: "260px" }}>
+          {open ? (
+            <Box />
+          ) : (
+            <Suspense fallback={<Loader />}>
+              <Model sceneUrl={modelFileName} />
+            </Suspense>
+          )}
+        </Box>
         <Stack direction="row" sx={{ marginTop: 2 }}>
-          {/* <Button onClick={handleLike} startIcon={<ThumbUpAltIcon />}>
-            {likes}
-          </Button> */}
           <Stack alignItems="center" direction="row" gap={1} sx={{ marginRight: 3 }}>
             <ThumbUpAltIcon />
             <Typography variant="body1">{likes}</Typography>
           </Stack>
-          {/* <Button onClick={handleDislike} startIcon={<ThumbDownAltIcon />}>
-            {dislikes}
-          </Button> */}
+
           <Stack alignItems="center" direction="row" gap={1} sx={{ marginRight: 3 }}>
             <ThumbDownAltIcon />
             <Typography variant="body1">{dislikes}</Typography>
           </Stack>
-          {/* <Button startIcon={<CommentIcon />}>{comments.length}</Button> */}
           <Stack alignItems="center" direction="row" gap={1} sx={{ marginRight: 3 }}>
             <CommentIcon />
             <Typography variant="body1">{comments.length}</Typography>
           </Stack>
         </Stack>
-        {/* <Button color="primary" onClick={handleOpen} variant="contained">
-          Open Post
-        </Button> */}
       </CardContent>
-      <PostModal handleClose={handleClose} open={open} product={props} />
+      <ProductProvider id={id}>
+        <Product handleClose={handleClose} open={open} />
+      </ProductProvider>
     </Card>
   );
 }
 
-export default ProductCard;
+export default memo(ProductCard);

@@ -5,7 +5,7 @@ import { db } from "../utils/db";
 import { ProductTable } from "../utils/schema";
 
 export const productsRouter = t.router({
-  getProduct: t.procedure.query(async () => {
+  getProduct: t.procedure.input(z.string().uuid()).query(async (req) => {
     const post = await db.query.ProductTable.findFirst({
       columns: {
         id: true,
@@ -17,6 +17,7 @@ export const productsRouter = t.router({
       with: {
         comments: true,
       },
+      where: (product) => eq(product.id, req.input),
     });
     return post;
   }),
@@ -37,21 +38,23 @@ export const productsRouter = t.router({
     return posts;
   }),
   like: t.procedure.input(z.string().uuid()).mutation(async (req) => {
-    await db
+    const likes = await db
       .update(ProductTable)
       .set({
         likes: sql`${ProductTable.likes} + 1`,
       })
       .where(eq(ProductTable.id, req.input))
-      .execute();
+      .returning({ likes: ProductTable.likes });
+    return likes;
   }),
   dislike: t.procedure.input(z.string().uuid()).mutation(async (req) => {
-    await db
+    const dislikes = await db
       .update(ProductTable)
       .set({
         dislikes: sql`${ProductTable.dislikes} + 1`,
       })
       .where(eq(ProductTable.id, req.input))
-      .execute();
+      .returning({ dislikes: ProductTable.dislikes });
+    return dislikes;
   }),
 });

@@ -8,10 +8,10 @@
     "build": "tsup",
     "clean": "rm -rf dist",
     "typecheck": "tsc -b",
-    "lint": "eslint src/",
+    "lint": "eslint api/",
     "test": "jest --detectOpenHandles",
-    "db:generate": "cd ./src; drizzle-kit generate",
-    "db:migrate": "tsup ./src/drizzle/migrate.ts --onSuccess 'node dist/migrate.js'"
+    "db:generate": "cd ./api; drizzle-kit generate",
+    "db:migrate": "tsup ./api/utils/migrate.ts --onSuccess 'node dist/migrate.js'"
   },
   "jest": {
     "preset": "@repo/jest-presets/node"

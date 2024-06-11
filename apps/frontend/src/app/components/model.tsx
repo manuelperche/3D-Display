@@ -1,7 +1,6 @@
-import React, { Suspense } from "react";
+import React, { memo } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { Html, OrbitControls } from "@react-three/drei";
-import type { Group } from "three";
+import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 interface ModelProps {
@@ -22,4 +21,4 @@ function Model({ sceneUrl, rotate = false }: ModelProps) {
   );
 }
 
-export default Model;
+export default memo(Model);
