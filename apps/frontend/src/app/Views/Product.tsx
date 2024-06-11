@@ -8,7 +8,7 @@ import { trpc } from "../Utils/trpc";
 import { useProduct } from "../Contexts/ProductContext";
 import Model from "../Components/Model";
 import CommentForm from "../Components/CommentForm";
-import Loader from "../Components/loader";
+import Loader from "../Components/Loader";
 import CommentList from "../Components/CommentList";
 
 interface ProductModalProps {
