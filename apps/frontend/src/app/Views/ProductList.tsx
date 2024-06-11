@@ -2,7 +2,7 @@ import React from "react";
 import type { FunctionComponentElement } from "react";
 import { Grid } from "@mui/material";
 import { trpc } from "../Utils/trpc";
-import ProductCards from "../Components/ProductCards";
+import ProductCards from "../Components/productCards";
 import Loader from "../Components/loader";
 
 function ProductList(): FunctionComponentElement<JSX.Element> {
