@@ -1,17 +1,14 @@
 import React, { Suspense, useState } from "react";
-import { Modal, Box, Typography, Button, Stack, Grid, Paper, Avatar, Tooltip } from "@mui/material";
+import { Modal, Box, Typography, Button, Stack, Grid, Tooltip } from "@mui/material";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import CommentIcon from "@mui/icons-material/Comment";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useNavigate } from "react-router-dom";
-import { TimeAgo } from "../Utils/TimeAgo";
 import { trpc } from "../Utils/trpc";
 import { useProduct } from "../Contexts/ProductContext";
 import Model from "../Components/Model";
 import CommentForm from "../Components/CommentForm";
 import Loader from "../Components/Loader";
-import Comment from "../Components/Comment";
 import CommentList from "../Components/CommentList";
 
 interface ProductModalProps {
