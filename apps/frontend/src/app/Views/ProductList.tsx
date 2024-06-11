@@ -1,9 +1,11 @@
 import React from "react";
 import type { FunctionComponentElement } from "react";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { trpc } from "../Utils/trpc";
 import ProductCards from "../Components/ProductCards";
 import Loader from "../Components/Loader";
+import Footer from "../Components/Footer";
+import Header from "../Components/Header";
 
 function ProductList(): FunctionComponentElement<JSX.Element> {
   const { data, isFetching, isRefetching } = trpc.products.getProducts.useQuery();
@@ -11,13 +13,19 @@ function ProductList(): FunctionComponentElement<JSX.Element> {
   if (isFetching && !isRefetching) return <Loader />;
 
   return (
-    <Grid alignItems="center" container justifyContent="center" spacing={3} sx={{ minHeight: "100vh", padding: 5 }}>
-      {data?.map((product) => (
-        <Grid item key={product.id} md={4} sm={6} sx={{ height: 400 }} xs={12}>
-          <ProductCards {...product} />
+    <Container maxWidth="xl" sx={{ minHeight: "100vh", padding: 5, display: "flex", flexDirection: "column", justifyContent: 'space-between' }}>
+      <Header />
+      <main>
+        <Grid alignItems="center" container justifyContent="center" spacing={3}>
+          {data?.map((product) => (
+            <Grid item key={product.id} md={4} sm={6} sx={{ height: 400 }} xs={12}>
+              <ProductCards {...product} />
+            </Grid>
+          ))}
         </Grid>
-      ))}
-    </Grid>
+      </main>
+      <Footer />
+    </Container>
   );
 }
 
