@@ -51,4 +51,87 @@ Due to lack of time, I just set up in the backend a simple jest test that tested
 
 ### API:
 
-I think the API is well documented on the code, everything is fully typed including inputs and what the endpoints return.
+```sh
+
+## Products Router:
+
+# products.getProduct:
+
+Query that takes a UUID as an input and returns an object with the shape:
+
+{
+  id: string;
+  name: string;
+  modelFileName: string;
+  likes: number;
+  dislikes: number;
+  comments: {
+      id: string;
+      name: string;
+      text: string;
+      createdAt: Date;
+      updatedAt: Date;
+      productId: string;
+  }[];
+}
+
+# products.getProducts:
+
+Query that returns an an array of objects with the same shape as getProduct.
+
+# products.like:
+
+Mutation that takes a product ID (UUID) and returns:
+
+likes: {
+    likes: number;
+}[]
+
+# products.dislike:
+
+Mutation that takes a product ID (UUID) and returns:
+
+dislikes: {
+    dislikes: number;
+}[]
+
+## Comments Router:
+
+# comments.addComment:
+
+Mutation that takes an input of this shape:
+
+{
+  name: string;
+  text: string;
+  productId: string;
+}
+
+And returns:
+
+{
+  id: string;
+  name: string;
+  text: string;
+  createdAt: Date;
+  updatedAt: Date;
+  productId: string;
+}[]
+
+# comments.editComment:
+
+Mutation that takes an input of this shape:
+
+{
+  id: string;
+  text: string;
+}
+
+And returns the same array as addComment.
+
+# comment.deleteComment:
+
+Mutation that takes a comment id (UUID) as an input and returns the same array as addComment.
+
+
+```
