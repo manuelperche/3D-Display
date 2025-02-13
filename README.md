@@ -1,6 +1,6 @@
-# Southern Code Full Stack Node/React Challenge
+# Full Stack Node/React
 
-3D Product display Web Application by: Manuel Perche
+3D Product display Web App by: Manuel Perche
 
 Deployed Application: 
 - [FrontEnd](https://3-d-display-frontend.vercel.app/)
@@ -16,12 +16,7 @@ Run the following command:
 pnpm run dev
 ```
 
-To run this project you'll need to provide enviroment variables to both back and front end, in the frontend you need a api url (I used http://localhost:5001) in the backend you need a connection string to the postgresql database, you can use the conection string for my neon database if you need to:
-
-```sh
-postgresql://3DDisplay_owner:2WKe5RuDUPcy@ep-young-breeze-a5cxkaoo.us-east-2.aws.neon.tech/3DDisplay?sslmode=require
-```
-
+To run this project you'll need to provide enviroment variables to both back and front end, in the frontend you need a api url (I used http://localhost:5001) in the backend you need a connection string to the postgresql database.
 
 ## What's inside?
 
@@ -45,9 +40,9 @@ I am not a UI/UX designer so sorry for the ugly template and styling, I focused 
 Due to the lack of user management, I decided to let any user like and dislike products as many times as they want, this could obviously be prevented by allowing a logged in user to like or dislike the product one time only.
 Also every user can comment as many times as they want and can edit any comment (but only content, the name is fixed)
 
-Handled everything inside a turborepo monorepo as sugested by the assignment document.
+Handled everything inside a turborepo monorepo.
 
-Due to lack of time, I just set up in the backend a simple jest test that tested the main getProducts endpoint, in the future more test should be added to test the other endpoints and also implement testing on the frontend using react-testing-library.
+I just set up in the backend a simple jest test that tested the main getProducts endpoint, in the future more test should be added to test the other endpoints and also implement testing on the frontend using react-testing-library.
 
 ### API:
 
